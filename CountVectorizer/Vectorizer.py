@@ -82,9 +82,23 @@ class LemmaTokenizer():
     def __init__(self):
         self.wnl = WordNetLemmatizer()
     
-    def __call__(self, doc: str) -> None:
+    def __call__(self, doc: str) -> list:
         tokens = word_tokenize(doc)
         
         words_and_tags = nltk.pos_tag(tokens)
-        return [self.wnl.lemmatize(word, pos = get_wordnet_pos(tag)) for word, tag in words_and_tags]
+        return [self.wnl.lemmatize(word, get_wordnet_pos(tag)) for word, tag in words_and_tags]
+
+class PorterTokenizer():
+    def __init__(self):
+        self.porter = PorterStemmer()
     
+    def __call__(self, doc: str) -> list:
+        tokens = word_tokenize(doc)
+        return [self.porter.stem(t) for t in tokens]
+
+class SimpleTokenizer():
+    def __init__(self):
+        pass
+
+    def __call__(self, doc: str):
+        return doc.split()
