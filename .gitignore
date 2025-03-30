@@ -1,2 +1,8 @@
 .vscode/
+PY3/
 __pycache__/
+.zip
+.pickle
+.README
+.txt
+.tab
