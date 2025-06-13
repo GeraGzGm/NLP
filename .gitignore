@@ -6,3 +6,4 @@ __pycache__/
 .README
 .txt
 .tab
+datasets/
